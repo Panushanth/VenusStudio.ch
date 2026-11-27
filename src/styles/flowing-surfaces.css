@@ -1,0 +1,65 @@
+/* Seamless editorial page surfaces: no colored rectangular bands or store grid. */
+:root {
+  --flow-base: #fcfaf7;
+  --flow-cream: #e6cfb05c;
+  --flow-pearl: #fffefa;
+  --flow-stone: #d6d1c745;
+  --flow-contour: #b69a7338;
+  --flow-shadow: #785b3820;
+}
+:root[data-theme='dark'] {
+  --flow-base: #191a19;
+  --flow-cream: #a37c4627;
+  --flow-pearl: #222320;
+  --flow-stone: #797e7023;
+  --flow-contour: #bea47832;
+  --flow-shadow: #0004;
+}
+body, [data-theme='dark'] body { background: var(--flow-base); }
+.public-page { overflow: clip; background: var(--flow-base); }
+.section-band { background: transparent; background-image: none; }
+.section-band--intro { background: radial-gradient(ellipse 75% 100% at 50% 0%, var(--flow-cream), transparent 95%); }
+.section-band--story { background: radial-gradient(ellipse 57% 49% at 95% 52%, var(--flow-cream), transparent 100%); }
+.section-band--metrics { background: radial-gradient(ellipse 65% 49% at 50% 50%, var(--flow-stone), transparent 100%); }
+.section-band--services { background: radial-gradient(ellipse 55% 49% at 5% 52%, var(--flow-stone), transparent 100%); }
+.section-band--packages { background: radial-gradient(ellipse 65% 49% at 95% 55%, var(--flow-cream), transparent 100%); }
+.section-band--store { background: radial-gradient(ellipse 65% 49% at 4% 45%, var(--flow-cream), transparent 100%); }
+.section-band--gallery { background: radial-gradient(ellipse 65% 49% at 95% 52%, var(--flow-stone), transparent 100%); }
+.section-band--reviews { background: radial-gradient(ellipse 70% 49% at 15% 55%, var(--flow-cream), transparent 100%); }
+.section-band--invitation { background: radial-gradient(ellipse 70% 49% at 75% 50%, var(--flow-cream), transparent 100%); }
+.section-band--values, .section-band--team, .section-band--account, .section-band--orders { background: radial-gradient(ellipse 65% 49% at 90% 50%, var(--flow-stone), transparent 100%); }
+.section-band--film, .section-band--auth, .section-band--booking, .section-band--product, .section-band--access { background: radial-gradient(ellipse 65% 49% at 15% 50%, var(--flow-cream), transparent 100%); }
+.section-band--cart, .section-band--location { background: radial-gradient(ellipse 70% 49% at 90% 50%, var(--flow-stone), transparent 100%); }
+.section-band--contact { background: radial-gradient(ellipse 60% 49% at 90% 50%, var(--flow-cream), transparent 100%); }
+.section-wave { top: 50%; height: clamp(100px, 20vw, 280px); transform: translateY(-50%); opacity: .65; mask-image: linear-gradient(90deg, transparent, #000 20%, #000 80%, transparent); }
+.wave-line { stroke: var(--flow-contour); }
+.section-band--story .section-wave, .section-band--reviews .section-wave { top: 30%; transform: translateY(-50%) scaleX(-1); }
+.section-band--gallery .section-wave { top: 80%; }
+/* The home page is an editorial sequence instead of a pile of bordered panels. */
+.home .section { padding-block: clamp(38px, 4.7vw, 74px); }
+.home .service-strip, [data-theme='dark'] .home .service-strip {
+  border: 1px solid var(--border); border-radius: 28px;
+  background: color-mix(in srgb, var(--panel) 88%, transparent);
+  box-shadow: 0 14px 48px var(--flow-shadow);
+}
+.home .service-feature, [data-theme='dark'] .home .service-feature { background: transparent; box-shadow: none; border: 0; }
+.home .service-image { border-radius: 20px 80px 20px 20px; }
+.home .service-feature-copy { padding-inline: clamp(14px, 3vw, 40px); }
+.home .section-band .product-card, .home .section-band .package-card,
+[data-theme='dark'] .home .section-band .product-card, [data-theme='dark'] .home .section-band .package-card {
+  background: transparent; border: 0; box-shadow: none; overflow: visible;
+}
+.home .product-card .product-visual { border-radius: 18px 18px 45px 18px; }
+.home .product-card .card-body { padding: 15px 0 0; }
+.home .product-card .tag { background: transparent; color: var(--accent); padding-inline: 0; }
+.home .product-card .product-actions .outline { background: transparent; }
+.home .review-card, [data-theme='dark'] .home .review-card { background: transparent; box-shadow: none; border: 0; }
+.home .register-banner, [data-theme='dark'] .home .register-banner { border: 0; box-shadow: none; border-radius: 28px 90px 28px 90px; background: color-mix(in srgb,var(--panel) 74%, transparent); }
+/* Preserve necessary form, checkout and admin surfaces for readability. */
+@media(max-width:760px) {
+  .home .section { padding-block: 36px; }
+  .home .service-image { border-radius: 20px 55px 20px 20px; }
+  .home .register-banner, [data-theme='dark'] .home .register-banner { border-radius: 24px; }
+  .section-wave { height: 110px; opacity: .45; }
+  .home .service-strip, [data-theme='dark'] .home .service-strip { border-radius: 18px; }
+}

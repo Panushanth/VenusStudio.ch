@@ -1,0 +1,98 @@
+/* Venus / Elegant Edition. Full-bleed, soft backgrounds; no colored section boxes. */
+:root {
+  --elegant-sand: #e9d5b970;
+  --elegant-pearl: #e9e5df85;
+  --elegant-rose: #e6d6cc68;
+  --elegant-sage: #d9ded280;
+  --elegant-line: #ae895d35;
+  --elegant-grid: #99784e18;
+}
+:root[data-theme='dark'] {
+  --elegant-sand: #a57b4833;
+  --elegant-pearl: #88877e25;
+  --elegant-rose: #ad80692c;
+  --elegant-sage: #71846c28;
+  --elegant-line: #d9bc8950;
+  --elegant-grid: #dac5a321;
+}
+/* Each section fades into the shared paper at its top and bottom. */
+.public-page .section-band { background-color: var(--flow-base); }
+.public-page .section-band::before {
+  content: ''; position: absolute; z-index: -1; inset: 0;
+  pointer-events: none; background: var(--section-motif, none);
+  background-size: var(--motif-size, auto);
+  mask-image: var(--motif-mask, linear-gradient(180deg, transparent, #000 22%, #000 78%, transparent));
+}
+.public-page .section-band--intro {
+  background: radial-gradient(ellipse 85% 100% at 50% 0%,var(--elegant-sand),transparent 95%), var(--flow-base);
+}
+.public-page .section-band--story {
+  background: radial-gradient(ellipse 60% 50% at 98% 50%,var(--elegant-rose),transparent 98%), var(--flow-base);
+  --section-motif: repeating-radial-gradient(ellipse 90% 85% at 110% 30%, transparent 0 31px,var(--elegant-line) 32px 33px,transparent 34px 65px);
+  --motif-mask: radial-gradient(ellipse 55% 58% at 100% 55%,#0007,transparent 98%);
+}
+.public-page .section-band--metrics {
+  background: radial-gradient(ellipse 70% 50% at 50% 50%,var(--elegant-pearl),transparent 100%), var(--flow-base);
+  --section-motif: radial-gradient(circle,var(--elegant-grid) 1px,transparent 1.5px);
+  --motif-size: 17px 17px;
+}
+.public-page .section-band--services {
+  background: radial-gradient(ellipse 60% 49% at 5% 51%,var(--elegant-pearl),transparent 100%),var(--flow-base);
+}
+.public-page .section-band--services .section-wave { opacity: .9; }
+.public-page .section-band--packages {
+  background: radial-gradient(ellipse 75% 50% at 50% 50%,var(--elegant-sand),transparent 100%),var(--flow-base);
+  --section-motif: repeating-linear-gradient(120deg, transparent 0 43px,var(--elegant-grid) 44px 45px,transparent 46px 88px);
+  --motif-mask: radial-gradient(ellipse 65% 50% at 95% 45%,#0009,transparent 100%);
+}
+.public-page .section-band--store {
+  background: radial-gradient(ellipse 78% 55% at 10% 50%,var(--elegant-pearl),transparent 100%),var(--flow-base);
+  --section-motif: linear-gradient(90deg,var(--elegant-grid) 1px,transparent 1px),linear-gradient(var(--elegant-grid) 1px,transparent 1px);
+  --motif-size: 56px 56px;
+  --motif-mask: radial-gradient(ellipse 90% 50% at 100% 48%,#000a,transparent 100%);
+}
+.public-page .section-band--gallery {
+  background: radial-gradient(ellipse 75% 50% at 100% 50%,var(--elegant-sage),transparent 100%),var(--flow-base);
+  --section-motif: repeating-linear-gradient(90deg,transparent 0 94px,var(--elegant-grid) 95px 96px,transparent 97px 150px);
+  --motif-mask: radial-gradient(ellipse 52% 50% at 0% 50%,#0007,transparent 100%);
+}
+.public-page .section-band--reviews {
+  background: radial-gradient(ellipse 67% 50% at 50% 50%,var(--elegant-rose),transparent 100%),var(--flow-base);
+  --section-motif: repeating-radial-gradient(ellipse 45% 100% at 50% 50%, transparent 0 52px,var(--elegant-grid) 53px 54px,transparent 55px 102px);
+}
+.public-page .section-band--invitation {
+  background: radial-gradient(ellipse 74% 50% at 90% 50%,var(--elegant-sand),transparent 100%),radial-gradient(ellipse 50% 45% at 0% 50%,var(--elegant-rose),transparent 100%),var(--flow-base);
+  --section-motif: repeating-linear-gradient(150deg,transparent 0 90px,var(--elegant-grid) 91px 92px,transparent 93px 180px);
+}
+.public-page .section-band--values { background: radial-gradient(ellipse 67% 50% at 45% 50%,var(--elegant-sage),transparent 100%),var(--flow-base); --section-motif: radial-gradient(circle,var(--elegant-grid) 1px,transparent 1.5px); --motif-size: 23px 23px; }
+.public-page .section-band--film { background: radial-gradient(ellipse 80% 50% at 50% 50%,var(--elegant-sand),transparent 100%),var(--flow-base); --section-motif: repeating-linear-gradient(0deg,transparent 0 22px,var(--elegant-grid) 23px 24px,transparent 25px 50px); }
+.public-page .section-band--team { background: radial-gradient(ellipse 72% 50% at 100% 50%,var(--elegant-rose),transparent 100%),var(--flow-base); --section-motif: repeating-linear-gradient(115deg,transparent 0 60px,var(--elegant-grid) 61px 62px,transparent 63px 120px); }
+.public-page .section-band--shop-hero { background: radial-gradient(ellipse 66% 100% at 96% 10%,var(--elegant-sand),transparent 95%),var(--flow-base); --section-motif: repeating-radial-gradient(ellipse at 95% 55%,transparent 0 51px,var(--elegant-line) 52px 53px,transparent 54px 102px); --motif-mask: radial-gradient(ellipse 50% 70% at 95% 50%,#000a,transparent 100%); }
+.public-page .section-band--shop-assurance { background: radial-gradient(ellipse 80% 55% at 10% 45%,var(--elegant-sage),transparent 100%),var(--flow-base); --section-motif: radial-gradient(circle,var(--elegant-grid) 1px,transparent 1.5px); --motif-size: 20px 20px; }
+.public-page .section-band--contact { background: radial-gradient(ellipse 74% 60% at 0% 50%,var(--elegant-sand),transparent 100%),var(--flow-base); --section-motif: repeating-radial-gradient(ellipse 70% 80% at -10% 50%,transparent 0 60px,var(--elegant-line) 61px 62px,transparent 63px 120px); --motif-mask: radial-gradient(ellipse 52% 52% at 0% 50%,#0009,transparent 100%); }
+.public-page .section-band--location { background: radial-gradient(ellipse 75% 50% at 95% 50%,var(--elegant-sage),transparent 100%),var(--flow-base); --section-motif: linear-gradient(35deg,var(--elegant-grid) 1px,transparent 1px),linear-gradient(125deg,var(--elegant-grid) 1px,transparent 1px); --motif-size: 50px 50px; }
+.public-page .section-band--account { background: radial-gradient(ellipse 65% 50% at 15% 50%,var(--elegant-sage),transparent 100%),var(--flow-base); }
+.public-page .section-band--orders { background: radial-gradient(ellipse 65% 50% at 85% 50%,var(--elegant-pearl),transparent 100%),var(--flow-base); }
+.public-page .section-band--booking { background: radial-gradient(ellipse 70% 50% at 0% 50%,var(--elegant-rose),transparent 100%),var(--flow-base); }
+.public-page .section-band--auth { background: radial-gradient(ellipse 70% 70% at 100% 50%,var(--elegant-sand),transparent 100%),var(--flow-base); }
+.public-page .section-band--cart { background: radial-gradient(ellipse 70% 50% at 85% 45%,var(--elegant-sage),transparent 100%),var(--flow-base); }
+.public-page .section-band--product { background: radial-gradient(ellipse 65% 50% at 8% 50%,var(--elegant-pearl),transparent 100%),var(--flow-base); }
+.public-page .section-band--access { background: radial-gradient(ellipse 70% 50% at 50% 50%,var(--elegant-sand),transparent 100%),var(--flow-base); }
+
+/* Restore the original What We Do composition: photo + copy + vertical list.
+   Only the image geometry changes: a true square, with straight corners. */
+.home .service-carousel { align-items: center; }
+.home .service-feature { grid-template-columns: minmax(0, 46fr) minmax(0, 54fr); border-radius: 0; overflow: visible; align-items: center; min-height: 0; }
+.home .service-image { width: 100%; height: auto; min-height: 0; aspect-ratio: 1 / 1; border-radius: 0; box-shadow: 0 15px 30px var(--flow-shadow); }
+.home .service-image img { border-radius: 0; }
+.home .service-selector { justify-content: center; }
+@media (max-width: 760px) {
+  .home .service-feature { grid-template-columns: minmax(0, 43fr) minmax(0, 57fr); }
+  .home .service-selector { justify-content: flex-start; }
+  .public-page .section-band::before { opacity: .65; }
+}
+@media (max-width: 480px) {
+  .home .service-feature { grid-template-columns: 1fr; }
+  .home .service-image { max-width: 100%; }
+  .home .service-feature-copy { padding: 20px 0 10px; }
+}

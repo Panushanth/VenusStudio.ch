@@ -1,0 +1,447 @@
+/* Theme tokens: light is the default; the switch changes every page, including admin. */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
+
+:root {
+  --serif: 'Playfair Display', 'Baskerville', Georgia, serif;
+  --sans: 'DM Sans', 'Segoe UI', Arial, sans-serif;
+  --text: #28221f;
+  --muted-text: #6b6059;
+  --paper: #faf8f5;
+  --surface: #f1e9df;
+  --panel: #fffdf9;
+  --border: #e2d7ca;
+  --accent: #8a582b;
+  --nav-text: #4d4035;
+  --nav-accent: #805126;
+  --glass-shell: linear-gradient(145deg,#fffffff2,#f5eee4e8);
+  --glass-track: linear-gradient(175deg,#ffffffc7,#e8ded1c9 55%,#fdfaf5e8);
+  --glass-edge: #d9cabb;
+  --glass-shine: #fff;
+  --glass-active: linear-gradient(160deg,#fff,#f5e7d0 52%,#e4c9a5);
+  --glass-active-edge: #d4af7e;
+  --glass-glow: #bb89566b;
+  --ease: cubic-bezier(.22,.75,.25,1);
+  font-family: var(--sans);
+  color: var(--text);
+  background: var(--paper);
+}
+
+html {
+  scroll-padding-top: 100px;
+}
+
+body {
+  color: var(--text);
+  font-family: var(--sans);
+}
+
+button, input, textarea, select {
+  font-family: inherit;
+}
+
+h1,h2,h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  letter-spacing: -.038em;
+}
+
+h1 {
+  line-height: 1.08;
+}
+
+h4 {
+  font-weight: 650;
+}
+
+.muted {
+  color: var(--muted-text);
+}
+
+.home .home-hero {
+  min-height: 440px;
+  height: clamp(440px, 38vw, 550px);
+}
+
+.home .hero-copy h1 {
+  font-size: clamp(2.7rem, 4.4vw, 4.85rem);
+}
+
+.home .home-hero .hero-copy {
+  padding-bottom: 60px;
+}
+
+.home .package-card .card-body {
+  padding: 15px 0 0;
+}
+
+.home .product-card .card-body {
+  padding: 15px;
+}
+
+.home .product-card img {
+  aspect-ratio: 1.8;
+}
+
+.home .section {
+  padding-block: 38px;
+}
+
+.home .service-carousel {
+  margin-top: 12px;
+}
+
+.home .service-feature {
+  min-height: 205px;
+}
+
+.home .service-image {
+  min-height: 205px;
+}
+
+.home .service-strip .service-card {
+  min-height: 76px;
+}
+
+.home .home-packages {
+  padding-top: 24px;
+}
+
+.public-page {
+  animation: copy-in .35s ease-out both;
+}
+
+.admin-theme-toggle {
+  margin-left: auto;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --text: #f3ece4;
+  --muted-text: #c7bdb0;
+  --paper: #181918;
+  --surface: #252623;
+  --panel: #232421;
+  --border: #47433b;
+  --line: #47433b;
+  --accent: #e7bd88;
+  --gold: #e7bd88;
+  --cream: #252623;
+  --shadow: 0 8px 28px #0003;
+  --nav-text: #e9dfd2;
+  --nav-accent: #f2cf9a;
+  --glass-shell: linear-gradient(150deg,#393b36ed,#1c1d1ceb);
+  --glass-track: linear-gradient(175deg,#51534bc7,#242622e8 70%,#373a34dc);
+  --glass-edge: #7772689c;
+  --glass-shine: #fff3;
+  --glass-active: linear-gradient(160deg,#817157,#4d493c 50%,#2e3028);
+  --glass-active-edge: #c29c6d;
+  --glass-glow: #f1bf767d;
+}
+
+[data-theme='dark'] body {
+  background: radial-gradient(ellipse at 0% 20%,#614b3330,transparent 35%), var(--paper);
+}
+
+[data-theme='dark'] .eyebrow,
+[data-theme='dark'] .price,
+[data-theme='dark'] .editorial-link,
+[data-theme='dark'] .text-link,
+[data-theme='dark'] .text-button,
+[data-theme='dark'] .access svg,
+[data-theme='dark'] .service-icon,
+[data-theme='dark'] .service-tab svg {
+  color: var(--accent);
+}
+
+[data-theme='dark'] .mark {
+  mix-blend-mode: normal;
+  filter: brightness(0) saturate(100%) invert(83%) sepia(16%) saturate(906%) hue-rotate(340deg);
+}
+
+[data-theme='dark'] .card,
+[data-theme='dark'] .service-grid .service-card,
+[data-theme='dark'] .review-card,
+[data-theme='dark'] .contact-row,
+[data-theme='dark'] .service-feature,
+[data-theme='dark'] .auth-layout,
+[data-theme='dark'] .modal,
+[data-theme='dark'] .profile-panel {
+  background: var(--panel);
+  color: var(--text);
+  border-color: var(--border);
+  box-shadow: var(--shadow);
+}
+
+[data-theme='dark'] .auth-form.card {
+  background: transparent;
+  box-shadow: none;
+}
+
+[data-theme='dark'] .service-feature-copy p,
+[data-theme='dark'] .compact-packages .card-body p,
+[data-theme='dark'] .contact-row p,
+[data-theme='dark'] .field span,
+[data-theme='dark'] .auth-form .muted {
+  color: var(--muted-text);
+}
+
+[data-theme='dark'] .outline,
+[data-theme='dark'] .round,
+[data-theme='dark'] .chip {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+[data-theme='dark'] .gold, [data-theme='dark'] .chip.selected {
+  background: linear-gradient(150deg,#f0d2a0,#c18e51);
+  border-color: #d2a36d;
+  color: #2b2118;
+}
+
+[data-theme='dark'] .home-hero,
+[data-theme='dark'] .page-hero {
+  background: var(--paper);
+  color: var(--text);
+}
+
+[data-theme='dark'] .home-hero:after {
+  inset: 0;
+  height: auto;
+  border-radius: 0;
+  transform: none;
+  background: linear-gradient(90deg,#151614f7 0%,#151614cc 35%,#15161450 64%,#15161418 100%);
+}
+
+[data-theme='dark'] .home-hero .hero-copy h1 {
+  text-shadow: none;
+}
+
+[data-theme='dark'] .hero-copy h1 em {
+  color: #efc88d;
+}
+
+[data-theme='dark'] .page-hero:before {
+  background-image: linear-gradient(90deg,#181918 0%,#181918e8 33%,#18191866 65%,#18191820 100%),var(--hero);
+}
+
+[data-theme='dark'] .service-strip {
+  background: var(--panel);
+  border-color: var(--border);
+}
+
+[data-theme='dark'] .service-strip .service-card {
+  background: transparent;
+  border-color: var(--border);
+}
+
+[data-theme='dark'] .service-strip .service-card:hover,
+[data-theme='dark'] .service-tab:hover {
+  background: #ffffff0d;
+}
+
+[data-theme='dark'] .service-tab {
+  color: var(--text);
+}
+
+[data-theme='dark'] .service-tab.selected {
+  background: var(--panel);
+  border-color: var(--border);
+}
+
+[data-theme='dark'] .service-progress {
+  background: var(--border);
+}
+
+[data-theme='dark'] .service-detail, [data-theme='dark'] .service-detail:nth-child(even) {
+  background: var(--surface);
+}
+
+[data-theme='dark'] .service-detail:nth-child(3n) {
+  background: #1d1e1b;
+}
+
+[data-theme='dark'] .compact-packages .package-card {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+[data-theme='dark'] .photo-stack img {
+  border-color: #64594b;
+}
+
+[data-theme='dark'] .tag, [data-theme='dark'] .status {
+  background: #4a3d2d;
+  color: #f0c995;
+}
+
+[data-theme='dark'] .review-section {
+  background: radial-gradient(ellipse at left,#684e323d,transparent 40%),#22231f;
+  border-color: var(--border);
+}
+
+[data-theme='dark'] .register-banner, [data-theme='dark'] .soft-cta {
+  background: #302a23;
+  border-color: var(--border);
+}
+
+[data-theme='dark'] .field input, [data-theme='dark'] .field textarea, [data-theme='dark'] .field select,
+[data-theme='dark'] table select, [data-theme='dark'] .search {
+  background: #1b1c19;
+  border-color: var(--border);
+  color: var(--text);
+}
+
+[data-theme='dark'] .field input::placeholder, [data-theme='dark'] .search::placeholder {
+  color: #b5aea4;
+}
+
+[data-theme='dark'] .field input:focus, [data-theme='dark'] .field textarea:focus, [data-theme='dark'] .field select:focus {
+  border-color: #c9a471;
+}
+
+[data-theme='dark'] .password-field > button {
+  color: var(--accent);
+}
+
+[data-theme='dark'] .error {
+  color: #ffb8a8;
+}
+
+[data-theme='dark'] .admin-shell {
+  background: var(--paper);
+}
+
+[data-theme='dark'] .admin-top {
+  background: var(--panel);
+  border-color: var(--border);
+}
+
+[data-theme='dark'] .sidebar {
+  background: #1e201d;
+  border-color: var(--border);
+}
+
+[data-theme='dark'] .admin-table-card th {
+  background: #35362f;
+  color: var(--text);
+}
+
+[data-theme='dark'] .demo-alert {
+  background: #3d3427;
+  border-color: #6c553a;
+  color: #f3d5aa;
+}
+
+[data-theme='dark'] .bar-track {
+  background: var(--border);
+}
+
+[data-theme='dark'] .shortcut {
+  color: var(--accent);
+  border-color: var(--border);
+}
+
+[data-theme='dark'] .value, [data-theme='dark'] .cart-row, [data-theme='dark'] .detail-row, [data-theme='dark'] .admin-recent, [data-theme='dark'] td {
+  border-color: var(--border);
+}
+
+@media (max-width: 760px) {
+  .home .home-hero {
+    height: auto;
+    min-height: 455px;
+  }
+  .home .home-hero .hero-copy {
+    padding-top: 195px;
+    padding-bottom: 64px;
+  }
+  .home .hero-copy h1 {
+    font-size: clamp(2.35rem,7vw,3.45rem);
+  }
+  .home .section {
+    padding-block: 32px;
+  }
+  [data-theme='dark'] .home-hero:after {
+    background: linear-gradient(0deg,#151614 0%,#151614f2 30%,#151614a6 53%,transparent 86%);
+  }
+  [data-theme='dark'] .page-hero:before {
+    background-image: linear-gradient(90deg,#181918f7 0%,#181918bb 60%,#18191844),var(--hero);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,*::before,*::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .reveal-ready {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Keep the photographic brand artwork intact in both modes. */
+
+.mark.official-logo, [data-theme='dark'] .mark.official-logo, .footer .mark.official-logo {
+  object-fit: contain;
+  filter: none;
+  mix-blend-mode: normal;
+  border-radius: 4px;
+}
+
+/* Restore the soft, compact cards from the approved premium light design. */
+
+.home .compact-packages .package-card {
+  background: linear-gradient(150deg, #fff, #f8f3ec);
+  border: 1px solid #eadfd2;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 7px 23px #49352010;
+}
+
+.home .compact-packages .package-card > img {
+  border-radius: 0;
+}
+
+.home .compact-packages .card-body {
+  padding: 15px 16px 17px;
+}
+
+.home .compact-packages .package-card:hover {
+  box-shadow: 0 12px 30px #49352020;
+}
+
+[data-theme='dark'] .home .compact-packages .package-card {
+  background: var(--panel);
+  border-color: var(--border);
+}
+
+[data-theme='dark'] .auth-art-copy .outline.light {
+  color: #fff;
+  background: #ffffff16;
+  border-color: #ffffff80;
+}
+
+[data-theme='dark'] .service-card svg, [data-theme='dark'] .value svg, [data-theme='dark'] .checks svg, [data-theme='dark'] .contact-row svg, [data-theme='dark'] .kpi svg {
+  color: var(--accent);
+}
+
+[data-theme='dark'] .text-button:hover, [data-theme='dark'] .text-link:hover {
+  color: #ffe0ae;
+}
+
+[data-theme='dark'] .status.confirmed, [data-theme='dark'] .status.completed {
+  background: #234332;
+  color: #b4e7c3;
+}
+
+[data-theme='dark'] .status.rejected {
+  background: #4d2a29;
+  color: #ffbbb0;
+}
+
+[data-theme='dark'] .auth-form .field input {
+  background: #191a18;
+}

@@ -1,0 +1,440 @@
+/* Venus — section-specific backgrounds. Load after theme.css.
+   All decorative colors are tokens: photos, logo and component layout stay intact. */
+
+:root {
+  --band-ivory: #fcfaf7;
+  --band-white: #fffdfa;
+  --band-sand: #f1e9de;
+  --band-stone: #f0efeb;
+  --band-champagne: #f6eee2;
+  --band-taupe: #eae2d8;
+  --band-wash: #bca17b13;
+  --band-line: #a88b6238;
+  --band-grid: #9d86651a;
+  --band-light: #ffffffb0;
+  --band-glow: #e3c8a253;
+  --band-halo: #d5c4ac40;
+  --band-card: #fffdf9;
+  --band-footer: #453429;
+}
+
+:root[data-theme='dark'] {
+  --band-ivory: #191b1a;
+  --band-white: #202220;
+  --band-sand: #2c2924;
+  --band-stone: #242827;
+  --band-champagne: #302a23;
+  --band-taupe: #292621;
+  --band-wash: #d8bc8c09;
+  --band-line: #d7be9052;
+  --band-grid: #d4c4aa12;
+  --band-light: #ffffff04;
+  --band-glow: #aa835323;
+  --band-halo: #b9a17f15;
+  --band-card: #262825;
+  --band-footer: #191b19;
+}
+
+body, [data-theme='dark'] body {
+  background: var(--band-ivory);
+  color: var(--text);
+}
+
+/* Full-width bands keep the existing inner .wrap and preserve mobile grids. */
+
+.section-band {
+  position: relative;
+  isolation: isolate;
+  display: flow-root;
+  background: var(--band-ivory);
+  color: var(--text);
+  min-width: 0;
+  transition: background-color .3s ease, color .3s ease;
+}
+
+.section-wave {
+  position: absolute;
+  z-index: -1;
+  inset: 0 0 auto;
+  width: 100%;
+  height: clamp(40px, 6.7vw, 95px);
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.wave-wash {
+  fill: var(--band-wash);
+}
+
+.wave-line {
+  fill: none;
+  stroke: var(--band-line);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.wave-line-secondary {
+  opacity: .45;
+}
+
+/* The service quick links float over the hero as before. */
+
+.section-band--intro {
+  background: linear-gradient(180deg, var(--band-champagne), var(--band-ivory));
+  padding-block: 1px 16px;
+  z-index: 1;
+}
+
+/* Editorial story: a soft, sweeping ribbon. */
+
+.section-band--story {
+  background: radial-gradient(ellipse at 100% 100%, var(--band-glow), transparent 50%),
+    linear-gradient(115deg, var(--band-ivory) 35%, var(--band-champagne));
+}
+
+/* Studio figures: understated stone, framing the existing cinematic photo. */
+
+.section-band--metrics {
+  background: linear-gradient(120deg, var(--band-stone), var(--band-taupe));
+  padding-block: clamp(22px, 3vw, 40px);
+}
+
+/* Services: clean paper with a quiet diagonal wash and contour lines. */
+
+.section-band--services {
+  background: linear-gradient(145deg, var(--band-white) 35%, var(--band-champagne));
+}
+
+/* Packages: warm champagne with a subtle off-centre spotlight. */
+
+.section-band--packages {
+  background: radial-gradient(ellipse at 50% 0, var(--band-light), transparent 68%), var(--band-sand);
+}
+
+/* Store: a fine editing-grid motif, in neutral colors only. */
+
+.section-band--store {
+  background-color: var(--band-stone);
+  background-image: radial-gradient(ellipse at 85% 0%, var(--band-halo), transparent 55%),
+    linear-gradient(90deg, var(--band-grid) 1px, transparent 1px),
+    linear-gradient(var(--band-grid) 1px, transparent 1px);
+  background-size: auto, 64px 64px, 64px 64px;
+}
+
+/* Gallery: bright, museum-like negative space and fine waves. */
+
+.section-band--gallery {
+  background: linear-gradient(150deg, var(--band-white) 40%, var(--band-ivory));
+}
+
+/* Reviews: soft, rounded pools of warm light. */
+
+.section-band--reviews {
+  background: radial-gradient(ellipse at 0% 90%, var(--band-glow), transparent 50%),
+    radial-gradient(ellipse at 100% 0%, var(--band-halo), transparent 48%), var(--band-champagne);
+}
+
+/* Existing review section had its own hard-coded background. The band owns it now. */
+
+.section-band .review-section, [data-theme='dark'] .section-band .review-section {
+  background: transparent;
+  border: 0;
+}
+
+.section-band--invitation {
+  background: linear-gradient(110deg, var(--band-taupe), var(--band-white) 52%, var(--band-champagne));
+  padding-block: clamp(24px, 4vw, 48px);
+}
+
+.section-band--invitation > .register-banner, .section-band--invitation > .soft-cta {
+  margin-block: 0;
+}
+
+/* About page: different surfaces for vision, showreel and people. */
+
+.section-band--values {
+  background: radial-gradient(ellipse at 50% 0%, var(--band-light), transparent 68%), var(--band-stone);
+}
+
+.section-band--values > .values {
+  padding-block: clamp(24px, 3vw, 44px);
+}
+
+.section-band--film {
+  background: linear-gradient(125deg, var(--band-taupe), var(--band-champagne));
+}
+
+.section-band--film > .showreel {
+  margin-block: clamp(24px, 4vw, 48px);
+}
+
+.section-band--team {
+  background: radial-gradient(ellipse at 12% 0%, var(--band-halo), transparent 45%), var(--band-white);
+}
+
+/* Service detail rows are inside their own bands, not the old nth-child palette. */
+
+.section-band .service-detail, [data-theme='dark'] .section-band .service-detail {
+  background: transparent;
+  color: var(--text);
+  padding-block: clamp(28px, 4vw, 54px);
+}
+
+.section-band .service-detail .eyebrow, .section-band .service-detail .editorial-link,
+.section-band .service-detail-copy > svg {
+  color: var(--accent);
+}
+
+.section-band .service-detail .editorial-link:hover {
+  color: var(--text);
+}
+
+/* Forms and member pages: calm paper, clear contrast, no changes to functionality. */
+
+.section-band--contact {
+  background: radial-gradient(ellipse at 10% 15%, var(--band-glow), transparent 45%),
+    linear-gradient(115deg, var(--band-champagne), var(--band-white));
+}
+
+.section-band--auth {
+  background: radial-gradient(ellipse at 85% 10%, var(--band-glow), transparent 42%),
+    linear-gradient(140deg, var(--band-stone), var(--band-ivory) 48%, var(--band-champagne));
+  padding-block: clamp(12px, 3vw, 38px);
+}
+
+.section-band--auth > .auth-layout {
+  margin-block: 0;
+}
+
+.section-band--booking {
+  background: linear-gradient(110deg, var(--band-champagne), var(--band-white) 70%);
+}
+
+.section-band--cart {
+  background: radial-gradient(ellipse at 100% 0, var(--band-halo), transparent 45%), var(--band-stone);
+}
+
+.section-band--account {
+  background: linear-gradient(115deg, var(--band-sand), var(--band-white));
+}
+
+.section-band--orders {
+  background: linear-gradient(130deg, var(--band-white), var(--band-stone));
+}
+
+.section-band--account > .account-head {
+  margin-bottom: 0;
+}
+
+.member-records h2 {
+  margin-bottom: 16px;
+}
+
+.member-records > .btn {
+  margin-top: 16px;
+}
+
+.section-band--product {
+  background: linear-gradient(125deg, var(--band-stone), var(--band-white));
+}
+
+.section-band--access {
+  background: radial-gradient(ellipse at 50% 0, var(--band-glow), transparent 70%), var(--band-ivory);
+}
+
+/* Light mode: keep existing bronze photographic footer, switch to charcoal at night. */
+
+.footer {
+  background: linear-gradient(115deg, #30251e, var(--band-footer));
+}
+
+[data-theme='dark'] .footer {
+  background: linear-gradient(120deg, #171918, #232521);
+  border-color: var(--border);
+}
+
+[data-theme='dark'] .footer .brand-text, [data-theme='dark'] .footer h4 {
+  color: #f3ece4;
+}
+
+/* Dark mode audit: fix remaining fixed light panels, controls and hover states. */
+
+[data-theme='dark'] .section-band .card,
+[data-theme='dark'] .review-card,
+[data-theme='dark'] .contact-row,
+[data-theme='dark'] .service-feature,
+[data-theme='dark'] .auth-layout {
+  background: var(--band-card);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+[data-theme='dark'] .auth-form.card {
+  background: transparent;
+  border-color: transparent;
+}
+
+[data-theme='dark'] .register-banner,
+[data-theme='dark'] .soft-cta {
+  background: linear-gradient(115deg, var(--band-taupe), var(--band-champagne));
+  border-color: var(--border);
+  color: var(--text);
+}
+
+[data-theme='dark'] .service-tab.selected {
+  background: var(--band-card);
+  color: var(--text);
+}
+
+[data-theme='dark'] .btn.outline:hover,
+[data-theme='dark'] .round:hover,
+[data-theme='dark'] .chip:not(.selected):hover {
+  background: #393a34;
+  color: var(--text);
+  border-color: #a38d70;
+}
+
+[data-theme='dark'] .auth-art-copy .btn.outline:hover {
+  background: #ffffff25;
+  color: white;
+}
+
+[data-theme='dark'] .service-strip .service-card {
+  background: transparent;
+  color: var(--text);
+}
+
+[data-theme='dark'] .service-strip .service-card:hover {
+  background: #ffffff0b;
+}
+
+[data-theme='dark'] .gallery-tile {
+  background: var(--band-card);
+}
+
+[data-theme='dark'] .review-card img {
+  border-color: #524a3d;
+  box-shadow: 0 0 0 1px #ac9069;
+}
+
+[data-theme='dark'] .stars {
+  color: #e9bd7e;
+}
+
+[data-theme='dark'] .dots button {
+  background: #79776c;
+}
+
+[data-theme='dark'] .dots button.selected {
+  background: #efc38a;
+}
+
+[data-theme='dark'] .detail-row strong, [data-theme='dark'] .admin-label {
+  color: var(--accent);
+}
+
+[data-theme='dark'] .field textarea::placeholder {
+  color: var(--muted-text);
+}
+
+[data-theme='dark'] .hero-copy h1 {
+  text-shadow: none;
+}
+
+[data-theme='dark'] .slide-count .line {
+  background: linear-gradient(90deg,#d4ad78 35%,#5d5b53 35%);
+}
+
+[data-theme='dark'] .modal-close {
+  background: var(--band-card);
+  color: var(--text);
+}
+
+[data-theme='dark'] .sidebar .side-link.active, [data-theme='dark'] .sidebar .side-link:hover {
+  background: #4a4031;
+  color: #f1d2a2;
+}
+
+/* The admin stays a practical workspace; only its surfaces and contrast change. */
+
+.admin-content {
+  background: radial-gradient(ellipse at 100% 0, var(--band-halo), transparent 45%), var(--band-ivory);
+  min-height: calc(100vh - 85px);
+}
+
+.admin-entry {
+  background: radial-gradient(ellipse at center, var(--band-champagne), var(--band-ivory) 70%);
+}
+
+.kpi-grid .kpi {
+  background: linear-gradient(145deg, var(--band-card), var(--band-champagne));
+}
+
+.overview-grid .card {
+  background: var(--band-card);
+}
+
+[data-theme='dark'] .admin-content .kpi {
+  background: linear-gradient(145deg, var(--band-card), var(--band-champagne));
+}
+
+[data-theme='dark'] .admin-content .overview-grid .card {
+  background: var(--band-card);
+}
+
+/* Narrow displays: waves remain quiet, padding scales down and content remains readable. */
+
+@media (max-width: 760px) {
+  .section-wave {
+    height: 38px;
+  }
+  .section-band--store {
+    background-size: auto, 42px 42px, 42px 42px;
+  }
+  .section-band--intro {
+    padding-bottom: 10px;
+  }
+  .section-band--values > .values {
+    padding-block: 20px;
+  }
+  .section-band--film > .showreel {
+    margin-block: 24px;
+  }
+  .section-band .service-detail {
+    padding-block: 30px;
+  }
+  .section-band--auth {
+    padding-block: 15px 28px;
+  }
+  .section-band--account .account-head {
+    margin-bottom: 0;
+  }
+  [data-theme='dark'] .page-hero:before {
+    background-image: linear-gradient(90deg,#181918fa 0%,#181918e8 40%,#1819189c 75%,#18191844),var(--hero);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-band {
+    transition: none;
+  }
+}
+
+/* A few small controls inherited a light border or color in the previous theme. */
+
+[data-theme='dark'] .service-tab {
+  border-color: var(--border);
+}
+
+[data-theme='dark'] .service-tab.selected {
+  border-color: #8d795f;
+}
+
+[data-theme='dark'] .field input, [data-theme='dark'] .field select, [data-theme='dark'] .field textarea {
+  caret-color: var(--accent);
+}
+
+.section-band .review-section > .section-heading {
+  width: min(92%, 1320px);
+  margin-inline: auto;
+}

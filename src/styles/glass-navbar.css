@@ -1,0 +1,393 @@
+/* A solid-glass, floating tab bar inspired by the supplied glass navigation reference. */
+
+.liquid-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 10px 0 12px;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.liquid-shell {
+  width: min(96%, 1500px);
+  margin: auto;
+  padding: 8px 15px 8px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  position: relative;
+  border: 1px solid var(--glass-edge);
+  border-radius: 999px;
+  background: var(--glass-shell);
+  box-shadow: 0 9px 30px #241c1719, inset 0 1px 1px var(--glass-shine);
+  backdrop-filter: blur(25px) saturate(160%);
+  -webkit-backdrop-filter: blur(25px) saturate(160%);
+}
+
+.liquid-shell .brand-text strong {
+  font: 600 .92rem var(--sans);
+  letter-spacing: .055em;
+}
+
+.liquid-shell .brand-text small {
+  font-size: .48rem;
+}
+
+.liquid-shell .mark {
+  width: 42px;
+  height: 40px;
+}
+
+.liquid-nav {
+  display: grid;
+  grid-template-columns: repeat(7,minmax(0,1fr));
+  flex: 1;
+  max-width: 650px;
+  min-width: 0;
+  position: relative;
+  isolation: isolate;
+  padding: 5px;
+  border-radius: 100px;
+  border: 1px solid var(--glass-edge);
+  background: var(--glass-track);
+  box-shadow: inset 0 1px 2px var(--glass-shine), inset 0 -3px 10px #34241613, 0 6px 15px #382e2312;
+}
+
+.liquid-indicator {
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  bottom: 4px;
+  width: calc((100% - 10px) / var(--tab-count));
+  border-radius: 40% 40% 46% 46% / 55% 55% 30% 30%;
+  transform: translateX(calc(var(--active-index) * 100%));
+  transition: transform .52s cubic-bezier(.23,1.35,.38,1), opacity .25s;
+  background: var(--glass-active);
+  border: 1px solid var(--glass-active-edge);
+  box-shadow: inset 0 1px 2px var(--glass-shine), 0 3px 12px var(--glass-glow);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.liquid-indicator span {
+  position: absolute;
+  height: 2px;
+  width: 66%;
+  left: 17%;
+  bottom: 3px;
+  border-radius: 50%;
+  background: var(--nav-accent);
+  box-shadow: 0 0 10px 2px var(--glass-glow);
+}
+
+.liquid-indicator.is-hidden {
+  opacity: 0;
+}
+
+.liquid-tab {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  padding: 6px 3px 8px;
+  min-height: 50px;
+  color: var(--nav-text);
+  text-align: center;
+  font-size: .68rem;
+  font-weight: 600;
+  line-height: 1.15;
+  transition: color .22s, transform .3s;
+  border-radius: 100px;
+}
+
+.liquid-tab-icon {
+  display: grid;
+  place-items: center;
+  transition: transform .36s cubic-bezier(.22,1,.36,1);
+}
+
+.liquid-tab.active, .liquid-tab:hover {
+  color: var(--nav-accent);
+}
+
+.liquid-tab.active .liquid-tab-icon {
+  transform: translateY(-2px) scale(1.08);
+  filter: drop-shadow(0 0 5px var(--glass-glow));
+}
+
+.liquid-tab:active {
+  transform: scale(.95);
+}
+
+.liquid-actions {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-shrink: 0;
+}
+
+.glass-tool {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 43px;
+  min-width: 43px;
+  padding: 0 10px;
+  color: var(--nav-text);
+  background: var(--glass-track);
+  border: 1px solid var(--glass-edge);
+  box-shadow: inset 0 1px 1px var(--glass-shine);
+  border-radius: 50px;
+  font-size: .75rem;
+  font-weight: 600;
+  transition: background .2s, color .2s, transform .25s;
+}
+
+.glass-tool:hover {
+  color: var(--nav-accent);
+  background: var(--glass-active);
+  transform: translateY(-1px);
+}
+
+.bag-count {
+  position: absolute;
+  right: -3px;
+  top: -3px;
+  min-width: 17px;
+  height: 17px;
+  display: grid;
+  place-items: center;
+  padding: 0 3px;
+  border-radius: 20px;
+  background: #94602f;
+  color: #fff;
+  font-size: .62rem;
+}
+
+.profile-area {
+  position: relative;
+}
+
+.profile-panel {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 15px);
+  width: 280px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 19px;
+  color: var(--text);
+  box-shadow: 0 20px 50px #17110d33;
+  animation: menu-in .25s ease-out both;
+}
+
+.profile-panel .eyebrow {
+  margin: 0;
+  font-size: .59rem;
+}
+
+.profile-panel h3 {
+  font-size: 1.6rem;
+  overflow-wrap: anywhere;
+}
+
+.profile-panel p {
+  color: var(--muted-text);
+  font-size: .84rem;
+  margin-bottom: 5px;
+}
+
+.profile-option {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: .83rem;
+  text-align: left;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.profile-option:hover {
+  color: var(--nav-accent);
+}
+
+.liquid-mobile-toggle {
+  display: none;
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-7px) scale(.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 1120px) {
+  .liquid-shell {
+    gap: 9px;
+    padding-inline: 12px;
+  }
+  .profile-caption {
+    display: none;
+  }
+  .liquid-shell .brand-text strong {
+    font-size: .79rem;
+  }
+  .liquid-shell .brand-text small {
+    font-size: .4rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .liquid-mobile-toggle {
+    display: inline-flex;
+  }
+  .liquid-shell {
+    border-radius: 25px;
+  }
+  .liquid-nav {
+    display: none;
+    position: absolute;
+    top: calc(100% + 9px);
+    left: 0;
+    right: 0;
+    max-width: none;
+    padding: 10px;
+    border-radius: 23px;
+    background: var(--panel);
+    grid-template-columns: repeat(4,minmax(0,1fr));
+    gap: 5px;
+    box-shadow: 0 15px 40px #17110d26;
+  }
+  .liquid-nav.is-open {
+    display: grid;
+    animation: menu-in .25s ease-out both;
+  }
+  .liquid-indicator {
+    display: none;
+  }
+  .liquid-tab {
+    min-height: 60px;
+    font-size: .75rem;
+    border-radius: 14px;
+  }
+  .liquid-tab.active {
+    background: var(--glass-active);
+    box-shadow: inset 0 0 0 1px var(--glass-active-edge);
+  }
+  .profile-panel {
+    right: -49px;
+  }
+}
+
+@media (max-width: 480px) {
+  .liquid-header {
+    padding-block: 7px;
+  }
+  .liquid-shell {
+    width: 96%;
+    padding: 7px 9px;
+    gap: 5px;
+  }
+  .liquid-shell .brand {
+    gap: 4px;
+  }
+  .liquid-shell .mark {
+    width: 31px;
+    height: 33px;
+  }
+  .liquid-shell .brand-text strong {
+    font-size: .68rem;
+    letter-spacing: .02em;
+  }
+  .liquid-shell .brand-text small {
+    display: none;
+  }
+  .liquid-actions {
+    gap: 4px;
+  }
+  .glass-tool {
+    width: 35px;
+    min-width: 35px;
+    min-height: 37px;
+    padding: 0;
+  }
+  .profile-tool > svg:last-child {
+    display: none;
+  }
+  .profile-panel {
+    right: -39px;
+    width: min(280px, 87vw);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .liquid-indicator, .liquid-tab, .liquid-tab-icon, .glass-tool {
+    transition: none;
+  }
+}
+
+/* Sculpted glass light, inspired by the glowing curved tab in the reference. */
+
+.liquid-indicator::before {
+  content: "";
+  position: absolute;
+  inset: 0 10% 16%;
+  border-radius: 55% 55% 25% 25% / 65% 65% 25% 25%;
+  background: radial-gradient(ellipse at 50% 0%, var(--glass-shine), transparent 64%);
+  opacity: .75;
+  pointer-events: none;
+}
+
+.liquid-indicator::after {
+  content: "";
+  position: absolute;
+  inset: 1px 10% 8%;
+  border-top: 2px solid var(--glass-active-edge);
+  border-radius: 48% 48% 30% 30%;
+  filter: drop-shadow(0 0 5px var(--glass-glow));
+}
+
+.liquid-shell .official-logo {
+  width: 38px;
+  height: 47px;
+  object-fit: contain;
+}
+
+@media (max-width: 480px) {
+  .liquid-shell .official-logo {
+    width: 29px;
+    height: 36px;
+  }
+  .liquid-shell .brand-text strong {
+    font-size: .65rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .liquid-shell .brand-text strong {
+    font-size: .60rem;
+  }
+  .liquid-shell .brand {
+    gap: 3px;
+  }
+}
